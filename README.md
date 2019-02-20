@@ -8,7 +8,6 @@ Replay all dead-letter messages for a ServiceBus subscription.
 ### Source
     go get github.com/InsideSalesOfficial/sbmv
 
-
 ## Configuration
 
 The `SERVICEBUS_CONNECTION_STRING` environment variable must be set.
