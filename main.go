@@ -41,27 +41,27 @@ func main() {
 
 	topic, err := ns.NewTopic(topicEntity.Name)
 	if err != nil {
-		return
+		log.Fatal(err)
 	}
 
 	sm, err := ns.NewSubscriptionManager(topicEntity.Name)
 	if err != nil {
 		log.Println(err)
-		return
+		log.Fatal(err)
 	}
 	_, err = ensureSubscription(ctx, sm, *subscriptionName)
 	if err != nil {
-		return
+		log.Fatal(err)
 	}
 
 	sub, err := topic.NewSubscription(*subscriptionName)
 	if err != nil {
-		return
+		log.Fatal(err)
 	}
 
 	deadEntity, err := sm.Get(ctx, sub.Name)
 	if err != nil {
-		log.Fatal("asdf  a ", err)
+		log.Fatal(err)
 	}
 
 	deadletterCount := int(*deadEntity.SubscriptionDescription.CountDetails.DeadLetterMessageCount)
